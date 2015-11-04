@@ -8,12 +8,12 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the urllist database table.
+ * The persistent class for the url database table.
  * 
  */
 @Entity
-@NamedQuery(name="Urllist.findAll", query="SELECT u FROM Urllist u")
-public class Urllist implements Serializable {
+@NamedQuery(name="Url.findAll", query="SELECT u FROM Url u")
+public class Url implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -34,15 +34,15 @@ public class Urllist implements Serializable {
 	@Column(name="URI_NAME")
 	private String uriName;
 
-	//bi-directional many-to-one association to Projectlist
+	//bi-directional many-to-one association to Project
 	@ManyToOne
-	private Projectlist projectlist;
+	private Project project;
 
-	//bi-directional many-to-one association to Hostlist
+	//bi-directional many-to-one association to Host
 	@ManyToOne
-	private Hostlist hostlist;
+	private Host host;
 
-	public Urllist() {
+	public Url() {
 	}
 
 	public int getUriId() {
@@ -85,20 +85,20 @@ public class Urllist implements Serializable {
 		this.uriName = uriName;
 	}
 
-	public Projectlist getProjectlist() {
-		return this.projectlist;
+	public Project getProjec() {
+		return this.project;
 	}
 
-	public void setProjectlist(Projectlist projectlist) {
-		this.projectlist = projectlist;
+	public void setProject(Project project) {
+		this.project = project;
 	}
 
-	public Hostlist getHostlist() {
-		return this.hostlist;
+	public Host getHost() {
+		return this.host;
 	}
 
-	public void setHostlist(Hostlist hostlist) {
-		this.hostlist = hostlist;
+	public void setHost(Host host) {
+		this.host = host;
 	}
 
 }
