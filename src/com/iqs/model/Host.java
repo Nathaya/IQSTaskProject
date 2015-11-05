@@ -8,12 +8,12 @@ import java.util.List;
 
 
 /**
- * The persistent class for the hostlist database table.
+ * The persistent class for the host database table.
  * 
  */
 @Entity
-@NamedQuery(name="Hostlist.findAll", query="SELECT h FROM Hostlist h")
-public class Hostlist implements Serializable {
+@NamedQuery(name="Host.findAll", query="SELECT h FROM Host h")
+public class Host implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,15 +29,15 @@ public class Hostlist implements Serializable {
 
 	private String port;
 
-	//bi-directional many-to-one association to Envlist
+	//bi-directional many-to-one association to Env
 	@ManyToOne
-	private Envlist envlist;
+	private Env env;
 
-	//bi-directional many-to-one association to Urllist
-	@OneToMany(mappedBy="hostlist")
-	private List<Urllist> urllists;
+	//bi-directional many-to-one association to Url
+	@OneToMany(mappedBy="host")
+	private List<Url> url;
 
-	public Hostlist() {
+	public Host() {
 	}
 
 	public int getHostId() {
@@ -72,34 +72,34 @@ public class Hostlist implements Serializable {
 		this.port = port;
 	}
 
-	public Envlist getEnvlist() {
-		return this.envlist;
+	public Env getEnv() {
+		return this.env;
 	}
 
-	public void setEnvlist(Envlist envlist) {
-		this.envlist = envlist;
+	public void setEnv(Env env) {
+		this.env = env;
 	}
 
-	public List<Urllist> getUrllists() {
-		return this.urllists;
+	public List<Url> getUrl() {
+		return this.url;
 	}
 
-	public void setUrllists(List<Urllist> urllists) {
-		this.urllists = urllists;
+	public void setUrl(List<Url> url) {
+		this.url = url;
 	}
 
-	public Urllist addUrllist(Urllist urllist) {
-		getUrllists().add(urllist);
-		urllist.setHostlist(this);
+	public Url addUrl(Url url) {
+		getUrl().add(url);
+		url.setHost(this);
 
-		return urllist;
+		return url;
 	}
 
-	public Urllist removeUrllist(Urllist urllist) {
-		getUrllists().remove(urllist);
-		urllist.setHostlist(null);
+	public Url removeUrl(Url url) {
+		getUrl().remove(url);
+		url.setHost(null);
 
-		return urllist;
+		return url;
 	}
 
 }

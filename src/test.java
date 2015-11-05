@@ -5,8 +5,8 @@ import java.sql.SQLException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.iqs.model.Projectlist;
-import com.iqs.service.ProjectlistService;
+import com.iqs.model.Project;
+import com.iqs.service.ProjectService;
 
 import util.HibernateUtil;
 
@@ -15,14 +15,14 @@ public class test
 
 	{
 	 @Autowired
-	 private static  ProjectlistService projectlistService;
+	 private static  ProjectService projectlistService;
 	 
 		public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException
 		{
 			try
 			{
 				System.out.println(projectlistService);
-				Projectlist projectlist = new Projectlist();
+				Project projectlist = new Project();
 				projectlist.setProjectId(1);
 				projectlist.setProjectName("test");
 				projectlistService.save(projectlist);
@@ -56,7 +56,7 @@ public class test
 			        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 			        session.beginTransaction();
 
-			        Projectlist project = new Projectlist();
+			        Project project = new Project();
 			        project.setProjectId(projectId);
 			        project.setProjectName(projectName);
 			        session.save(project);

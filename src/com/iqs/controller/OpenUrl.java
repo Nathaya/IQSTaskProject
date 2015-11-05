@@ -3,18 +3,20 @@ package com.iqs.controller;
 
 import java.awt.Desktop;
 import java.net.URL;
+import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 
-import com.iqs.model.Projectlist;
-import com.iqs.service.ProjectlistService;
+import com.iqs.model.Host;
+import com.iqs.model.Project;
+import com.iqs.service.GetUrlService;
+import com.iqs.service.UrlService;
+import com.iqs.service.HostService;
+import com.iqs.service.ProjectService;
 
 @ManagedBean
 @SessionScoped
@@ -22,22 +24,33 @@ import com.iqs.service.ProjectlistService;
 public class OpenUrl {
 	
 	 @Autowired
-	 private  ProjectlistService projectlistService;
+	 private  ProjectService projectService;
+	 @Autowired
+	 private HostService hostService;
+	 @Autowired
+	 private UrlService urlService;
+	 @Autowired
+	 private GetUrlService getUrlService;
 	 
 	 public void testtest() {
 
 			try {
 
-				Projectlist projectlist = new Projectlist();
-				//projectlist.setProjectId(1);
-				projectlist.setProjectName("Test");
+				Project project = new Project();
 				
-				projectlistService.save(projectlist); 
-				//projectlistService.getAllProject();
-		
-			//	projectlistService.getProjectNameById(1);
-				System.out.println(projectlistService.getProjectNameById(1).getProjectName());
+				//project.setProjectName("Test");
+				//projectService.save(project); 
+				String projectname = projectService.getProjectNameById(1).getProjectName();
 				
+				System.out.println(projectname);
+				
+				String uri =  getUrlService.getHostUriByProdIdEnvId(1, 2).get(0).toString();
+				System.out.println(uri);
+				
+				String uriname = urlService.getUriNameByProjectId(1).getUriName();
+				System.out.println(uriname);
+				
+				//System.out.println(getUrlService.getHostUriByProdIdEnvId(1, 2));
 
 				System.out.println("done");
 
@@ -46,24 +59,41 @@ public class OpenUrl {
 				e.printStackTrace();
 			}
 		}
-	public void shin() {
+	public void shin() throws Exception {
+		//String hostname =  hostService.getHostNameByHostId(1).getHostName();
+		//String uriname = urlService.getUriNameByProjectId(1).getUriName();
+		String uri =  getUrlService.getHostUriByProdIdEnvId(1, 2).get(0).toString();
 		OpenUrl browse = new OpenUrl();
-		browse.CallUrl("http://teststore.iqsolutions.com/home");
+		//browse.CallUrl("http://teststore.iqsolutions.com/home");
+		browse.CallUrl(uri);
 	}
 
-	public void nhlbi() {
+	public void nhlbi() throws Exception {
+		String uri =  getUrlService.getHostUriByProdIdEnvId(2, 2).get(0).toString();
 		OpenUrl browse = new OpenUrl();
-		browse.CallUrl("http://testnhlbi.iqsolutions.com/catalog/home");
+		//browse.CallUrl("http://testnhlbi.iqsolutions.com/catalog/home");
+		browse.CallUrl(uri);
 	}
 
-	public void ninds() {
+	public void ninds() throws Exception {
+		String uri =  getUrlService.getHostUriByProdIdEnvId(3, 2).get(0).toString();
 		OpenUrl browse = new OpenUrl();
-		browse.CallUrl("http://testninds.iqsolutions.com/ninds/home");
+		//browse.CallUrl("http://testninds.iqsolutions.com/ninds/home");
+		browse.CallUrl(uri);
 	}
 
-	public void nimh() {
+	public void nimh() throws Exception {
+		String uri =  getUrlService.getHostUriByProdIdEnvId(4, 2).get(0).toString();
 		OpenUrl browse = new OpenUrl();
-		browse.CallUrl("http://testnimh.iqsolutions.com/");
+		//browse.CallUrl("http://testnimh.iqsolutions.com/");
+		browse.CallUrl(uri);
+	}
+	
+	public void pinnacle() throws Exception {
+		String uri =  getUrlService.getHostUriByProdIdEnvId(5, 2).get(0).toString();
+		OpenUrl browse = new OpenUrl();
+		//browse.CallUrl("http://testnimh.iqsolutions.com/");
+		browse.CallUrl(uri);
 	}
 
 	public void CallUrl(String url) {

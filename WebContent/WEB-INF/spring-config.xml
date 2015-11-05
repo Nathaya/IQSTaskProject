@@ -17,11 +17,22 @@
     <!-- Configure annotated beans -->
     <context:annotation-config />
     <context:component-scan base-package="com.iqs" />
+        
+	<bean id="projectDao" class="com.iqs.dao.ProjectDaoImpl"/>
+   <bean id="hostDao" class="com.iqs.dao.HostDaoImpl"/>
+    <bean id="UrltDao" class="com.iqs.dao.UrlDaoImpl"/>
+   <bean id="getUrltDao" class="com.iqs.dao.GetUrlDaoImpl"/>
+      
+   	<bean id="projectService" class="com.iqs.service.ProjectServiceImpl"/>
+    <bean id="hostService" class="com.iqs.service.HostServiceImpl"/>
+    <bean id="urlService" class="com.iqs.service.UrlServiceImpl"/>
+     <bean id="getUrlService" class="com.iqs.service.GetUrlServiceImpl"/>
+     
     
    <!-- DataSource -->
   	<bean id="dataSource"  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 	  <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-	  <property name="url" value="jdbc:mysql://localhost:3306/test_iqs" />
+	  <property name="url" value="jdbc:mysql://localhost:3306/iqs_db" />
 	  <property name="username" value="root" />
 	  <property name="password" value="root" />
  	</bean>
@@ -39,10 +50,6 @@
             </props>
         </property>
     </bean>
-    
-	<bean id="projectlistDao" class="com.iqs.dao.ProjectlistDaoImpl"/>
-   <bean id="hostlistDao" class="com.iqs.dao.HostlistDaoImpl"/>
-   	<bean id="projectlistService" class="com.iqs.service.ProjectlistServiceImpl"/>
    	
     <!-- Transaction management -->
   <tx:annotation-driven/>
