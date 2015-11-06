@@ -3,7 +3,6 @@ package com.iqs.controller;
 
 import java.awt.Desktop;
 import java.net.URL;
-import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.iqs.model.Host;
-import com.iqs.model.Project;
 import com.iqs.service.GetUrlService;
 import com.iqs.service.UrlService;
 import com.iqs.service.HostService;
@@ -32,11 +30,14 @@ public class OpenUrl {
 	 @Autowired
 	 private GetUrlService getUrlService;
 	 
+	 
+	
+	 
 	 public void testtest() {
 
 			try {
 
-				Project project = new Project();
+				//Project project = new Project();
 				
 				//project.setProjectName("Test");
 				//projectService.save(project); 
@@ -105,5 +106,7 @@ public class OpenUrl {
 			e.printStackTrace();
 		}
 	}
+
+
 
 }
