@@ -7,7 +7,7 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-	<title>Task1</title>
+	<title>Task2</title>
 </h:head>
 <h:body>
 	<h1>KM Projects</h1>
@@ -21,6 +21,7 @@
    			<f:selectItem itemValue="3" itemLabel="NINDS" />
    			<f:selectItem itemValue="4" itemLabel="NIMH" />
    			<f:selectItem itemValue="5" itemLabel="Pinnacle" />
+   			<f:selectItem itemValue="6" itemLabel="All" />
    			</h:selectOneRadio>
    		
    		<h2>Environment:</h2>
@@ -30,7 +31,7 @@
    			<f:selectItem itemValue="3" itemLabel="Dev" />
    			</h:selectOneRadio>
    			<br />
-   	<h:commandButton value="Submit" action="#{openUrlChoice.browseurl}" />
+   	<h:commandButton value="OPEN URL" action="#{openUrlChoice.choiceUrl}" />
    	
    	
 	</h:form>

@@ -46,24 +46,37 @@ public class openUrlChoice {
 		public void setError(String error) {
 			this.error = error;
 		}
+		
+		public void choiceUrl(){
+			if (projtype == 6){
+				int count = projtype;
+				for (int i = 1; i < count; i++) {
+					projtype = i;
+					browseurl();
+				}
+				projtype = count;
+			}else{
+				browseurl();
+			}
+    	}
 
 	public void browseurl() {
 		 
-		 String uri;
+	 String uri;
 		try {
 			uri = getUrlService.getHostUriByProdIdEnvId(projtype,envtype).get(0).toString();
 			setError(" ");
-				OpenUrl browse = new OpenUrl();
-				browse.CallUrl(uri);
+			openUrlChoice browse = new openUrlChoice();
+				browse.callUrl(uri);
 	
 		} catch (Exception NullPointerException) {
 			// TODO Auto-generated catch block
-			setError("**Have No data in Table!!");
+			setError("**Have no data in Table!!");
 		}
 		
 	 }
 	
-	public void CallUrl(String url) {
+	public void callUrl(String url) {
 		try {
 		//System.out.println("Test1");
 			Desktop.getDesktop().browse(new URL(url).toURI());

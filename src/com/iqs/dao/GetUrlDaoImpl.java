@@ -10,9 +10,6 @@ import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.iqs.model.Host;
-import com.iqs.model.Url;
-
 @Repository("getUrlDao")
 public class GetUrlDaoImpl implements GetUrlDao {
 	
@@ -39,13 +36,13 @@ public class GetUrlDaoImpl implements GetUrlDao {
 	     query.setParameter("envId", envId);
 	     List records = query.list();
 	     // query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-	     if(records!=null && !records.isEmpty()) {
+	   //  if(records!=null && !records.isEmpty()) {
+	      if (records.size() > 0) {
 	    	  return records;
 	     }else{
 	    	 return null;
 	     }
-	    	 
-	     
+     
 
 	}
 
