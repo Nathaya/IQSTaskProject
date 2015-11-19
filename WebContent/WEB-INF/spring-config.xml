@@ -28,6 +28,7 @@
     <bean id="urlService" class="com.iqs.service.UrlServiceImpl"/>
      <bean id="getUrlService" class="com.iqs.service.GetUrlServiceImpl"/>
      
+     <!-- Test -->
     
    <!-- DataSource -->
   	<bean id="dataSource"  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
